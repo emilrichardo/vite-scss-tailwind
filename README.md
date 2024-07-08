@@ -15,16 +15,12 @@ Asegúrate de tener instalados los siguientes requisitos en tu sistema:
 
    ```sh
    git clone https://github.com/emilrichardo/vite-scss-tailwind
-   cd tu-proyecto
+   cd vite-scss-tailwind
    ```
 
 2. Instala las dependencias del proyecto:
    ```sh
    npm install
-   ```
-   o si prefieres usar Yarn:
-   ```sh
-   yarn install
    ```
 
 ## Scripts de NPM
@@ -41,10 +37,9 @@ En el archivo `package.json`, están definidos los siguientes scripts:
 }
 ```
 
-Usa el comando
-
-```npm run watch
+Usa el comando "npm run watch" para actualizar los cambios en /public
 
 ```
+npm run watch
 
-Para actualizar los cambios en /public
+```
