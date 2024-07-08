@@ -1,5 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import "./blocks/index.scss";
 body {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: rgb(241, 186, 246);
 }
