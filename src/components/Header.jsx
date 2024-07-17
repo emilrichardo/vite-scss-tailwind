@@ -1,11 +1,14 @@
 import React from "react";
 
-const Header = ({ children, title }) => {
+const Header = ({ title }) => {
   return (
-    <div>
-      <h1>{title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: children }}></div>
-    </div>
+    <>
+      <header>
+        <div className="container bg-white p-8">
+          <h1>{title}</h1>
+        </div>
+      </header>
+    </>
   );
 };
 export default Header;

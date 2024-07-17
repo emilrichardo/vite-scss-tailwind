@@ -1,10 +1,9 @@
 import React from "react";
 
-const Footer = ({ children, copy }) => {
+const Footer = ({ copy }) => {
   return (
-    <footer>
+    <footer className=" bg-black text-white p-4">
       <p>{copy}</p>
-      <div dangerouslySetInnerHTML={{ __html: children }}></div>
     </footer>
   );
 };

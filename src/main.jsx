@@ -3,18 +3,26 @@ import ReactDOM from "react-dom/client";
 import { components } from "./components";
 import "./scss/style.scss";
 
-Object.keys(components).map((componentId) => {
-  const containers = document.querySelectorAll(`[id="${componentId}"]`);
+const searchComponent = (componentId) => {
+  const containers = document.querySelectorAll(
+    `[data-component="${componentId}"]`
+  );
   containers.forEach((container) => {
     const props = {};
     for (const attr of container.attributes) {
       props[attr.name] = attr.value;
     }
-    const children = container.innerHTML;
-    const Component = components[componentId];
 
+    const Component = components[componentId];
+    if (!Component) {
+      return;
+    }
     const root = ReactDOM.createRoot(container);
 
-    root.render(<Component {...props}>{children}</Component>);
+    root.render(<Component {...props}></Component>);
   });
+};
+
+Object.keys(components).map((componentId) => {
+  searchComponent(componentId);
 });
