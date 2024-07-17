@@ -3,6 +3,9 @@ import ReactDOM from "react-dom/client";
 import { components } from "./components";
 import "./scss/style.scss";
 
+// Step 1: Create a map to store roots
+const rootsMap = new WeakMap();
+
 const renderComponent = (container, componentId) => {
   const props = {};
   for (const attr of container.attributes) {
@@ -12,8 +15,17 @@ const renderComponent = (container, componentId) => {
   if (!Component) {
     return;
   }
-  const root = ReactDOM.createRoot(container);
-  root.render(<Component {...props} />);
+
+  // Step 2: Check if a root already exists for this container
+  let root = rootsMap.get(container);
+  if (!root) {
+    // If not, create a new root and store it
+    root = ReactDOM.createRoot(container);
+    rootsMap.set(container, root);
+  }
+
+  // Step 3: Use the existing or new root to render the component
+  root.render(<Component {...props}></Component>);
 };
 
 const searchAndRenderComponents = (container) => {
