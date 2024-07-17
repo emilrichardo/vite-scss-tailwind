@@ -1,15 +1,20 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import MyComponent from "./components/MyComponent";
+import ReactDOM from "react-dom/client";
+import { components } from "./components";
 import "./scss/style.scss";
 
-// Encuentra el contenedor del componente
-const container = document.getElementById("my-componente");
+Object.keys(components).map((componentId) => {
+  const containers = document.querySelectorAll(`[id="${componentId}"]`);
+  containers.forEach((container) => {
+    const props = {};
+    for (const attr of container.attributes) {
+      props[attr.name] = attr.value;
+    }
+    const children = container.innerHTML;
+    const Component = components[componentId];
 
-const props = {};
-for (const attr of container.attributes) {
-  props[attr.name] = attr.value;
-}
+    const root = ReactDOM.createRoot(container);
 
-const root = ReactDOM.createRoot(container);
-root.render(<MyComponent {...props} />);
+    root.render(<Component {...props}>{children}</Component>);
+  });
+});
